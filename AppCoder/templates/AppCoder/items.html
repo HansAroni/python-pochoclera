@@ -1,0 +1,97 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+
+<div action="" method="POST" Align="center"
+            style="margin: auto; margin-top: 10%; margin-bottom: 8%;
+            width: 50%; 
+            height: 75%; 
+            border: 0px solid aqua;
+            ">
+
+                <h2 style="margin-bottom: 10%;">
+                    Items
+                    {% if user.is_authenticated %}
+                        <a style="font-size: 50%; color:gray; " href="{% url 'itemsformulario' %}">Agregar</a> 
+                    {% endif  %}
+                </h2>
+                <!-- Peliculas -->
+                    {% for e in dato %}   
+                    {%  if e.tipo == "Pelicula" %}
+                <div>
+                    {%  if e.imagen %}
+                        <img src="{% static e.imagen.url %}" style="width:10%; float:right; " alt="error de imagen">
+                    {% endif  %}
+                        <h4 ><li>{{e.nombre}}</li></h4>
+                        <p Align="center">
+                            Tipo: {{e.tipo}} <br>
+                            Pochoclos: {{e.pochoclos}} <br>
+                            Descripción: {{e.descripcion}}</p>
+                            {% if user.is_authenticated %}
+                            <a style="color:gray" href="{% url 'detalleitems' e.nombre %}">Ver</a>
+                            <a> - </a>
+                            <a style="color:gray" href="{% url 'editar' e.nombre %}">Editar</a>
+                            <a> - </a>
+                                <a style="color:gray"  href="{% url 'borrar' e.nombre %}">Borrar</a> 
+                            {% endif  %}
+                            <hr size=5><br><br><br>
+                </div>
+                <div style="clear: both;"></div>
+                    {% endif  %}
+                {%  endfor    %}
+                <!-- Series -->
+                    {% for e in dato %}   
+                    {%  if e.tipo == "Serie" %}
+                    <div>
+                        {%  if e.imagen %}
+                            <img src="{% static e.imagen.url %}" style="width:10%; float:right; " alt="error de imagen">
+                        {% endif  %}
+                            <h4 ><li>{{e.nombre}}</li></h4>
+                            <p Align="center">
+                            Tipo: {{e.tipo}} <br>
+                            Pochoclos: {{e.pochoclos}} <br>
+                            Descripción: {{e.descripcion}}</p>   
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'editar' e.nombre %}">Editar</a> 
+                                <a> - </a>
+                                <a href="{% url 'borrar' e.nombre %}">Borrar</a> 
+                            {% endif  %}
+                            <hr size=5><br><br><br>
+                    </div>
+                    <div style="clear: both;"></div>
+                    {% endif  %}
+                {%  endfor    %}
+                <!--  -->
+                    {% for e in dato %}   
+                    {%  if e.tipo == "" %}
+                    <div >
+                        {%  if e.imagen %}
+                            <img src="{% static e.imagen.url %}" style="width:10%; float:right; " alt="error de imagen">
+                        {% endif  %}
+                            <h4 ><li>{{e.nombre}}</li></h4>
+                            <p Align="center">
+                            Tipo: {{e.tipo}} <br>
+                            Pochoclos: {{e.pochoclos}} <br>
+                            Descripción: {{e.descripcion}}</p>   
+                            {% if user.is_authenticated %}
+                                <a style="color:gray"  href="{% url 'editar' e.nombre %}">Editar</a> 
+                                <a> - </a>
+                                <a style="color:gray"  href="{% url 'borrar' e.nombre %}">Borrar</a> 
+                            {% endif  %}
+                            <hr size=5><br><br><br>
+                    </div>
+                    <div style="clear: both;"></div>
+                    {% endif  %}
+                {%  endfor    %}
+            </div>
+   
+
+{% endblock %}
+

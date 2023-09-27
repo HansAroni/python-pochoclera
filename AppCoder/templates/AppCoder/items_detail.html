@@ -1,0 +1,47 @@
+
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<form action="" method="POST" Align="center"
+        style="margin: auto; margin-top: 8%; margin-bottom: 5%;
+        width: 50%; 
+        height: 75%; 
+        border: 1px solid rgb(27, 56, 219);
+        color: blue;
+        font-family: 'Roboto';
+        ">
+
+            <h2 style="margin-bottom: 8%;">
+                Pochoclera - items detalles
+            </h2>
+
+
+
+
+
+            <img src="{% static object.imagen.url %}" style="width:20%; float:right; " alt="error de imagen">
+            <p>Nombre del item: <i>{{object.nombre}}</i></p>
+            <p>tipo  : <i>{{object.tipo}}</i></p>
+            <p>Descripción  : <i>{{object.descripcion}}</i></p>
+            
+
+            <br>
+            <br>
+
+                <a href="{% url 'listaitems'%}">regresar</a>
+            </p>
+
+
+
+
+            
+        </form>
+
+{% endblock %}

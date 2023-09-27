@@ -1,0 +1,15 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<body>
+    <meta http-equiv = "refresh" content = "0; url = {% url 'Inicio' %}" />
+</body>
+
+{% endblock %}

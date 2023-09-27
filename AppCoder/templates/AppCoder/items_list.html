@@ -1,0 +1,72 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+
+<div action="" method="POST" Align="center"
+style="margin: auto; margin-top: 10%; margin-bottom: 8%;
+width: 50%; 
+height: 75%; 
+border: 0px solid aqua;
+">
+
+    <h2 style="margin-bottom: 10%;">
+        Items
+        {% if user.is_staff %}
+            <a style="font-size: 50%; color:rgb(222, 152, 210); " href="{% url 'crearitem' %}">Agregar</a> 
+        {% endif  %}
+    </h2>
+    <!-- Peliculas -->
+        {% for e in object_list %}   
+        {%  if e.tipo == "Pelicula" %}
+    <div>
+        {%  if e.imagen %}
+            <img src="{% static e.imagen.url %}" style="width:20%; float:right; " alt="error de imagen">
+        {% endif  %}
+            <h4 ><li>{{e.nombre}} <a style="font-size: 80%; color:rgb(80, 55, 194); " href="{% url 'detalleitems' e.id%}">Detalle</a> </li></h4> 
+            <p style="color:white" Align="center">
+                Tipo: {{e.tipo}} <br>
+                Pochoclos: {{e.pochoclos}} <br>
+                Descripción: {{e.descripcion}}</p>
+                {% if user.is_staff %}
+                    <a style="color:rgb(68, 37, 202)" href="{% url 'cambiaritem' e.id %}">Editar</a>
+                    <a> - </a>
+                    <a style="color:rgb(34, 60, 207)"  href="{% url 'borraritem' e.id %}">Borrar</a> 
+                {% endif  %}
+                <hr size=5><br><br><br>
+    </div>
+    <div style="clear: both;"></div>
+        {% endif  %}
+    {%  endfor    %}
+    <!-- Series -->
+        {% for e in object_list %}   
+        {%  if e.tipo == "Serie" %}
+        <div>
+            {%  if e.imagen %}
+                <img src="{% static e.imagen.url %}" style="width:20%; float:right; " alt="error de imagen">
+            {% endif  %}
+                <h4 ><li>{{e.nombre}} <a style="font-size: 80%; color:rgb(80, 55, 194); " href="{% url 'detalleitems' e.id%}">Detalle</a></li></h4>
+                <p style="color:rgb(34, 22, 90)" Align="center">
+                Tipo: {{e.tipo}} <br>
+                Pochoclos: {{e.pochoclos}} <br>
+                Descripción: {{e.descripcion}}</p>
+                {% if user.is_authenticated %}
+                    <a style="color:rgb(66, 24, 216)" href="{% url 'cambiaritem' e.id %}">Editar</a>
+                    <a> - </a>
+                    <a style="color:rgb(57, 18, 228)"  href="{% url 'borraritem' e.id %}">Borrar</a> 
+                {% endif  %}
+                <hr size=5><br><br><br>
+        </div>
+        <div style="clear: both;"></div>
+        {% endif  %}
+    {%  endfor    %}
+    
+
+
+{% endblock %}

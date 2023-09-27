@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', Georgia, 'Times New Roman', Times, serif;
+    background: linear-gradient(rgb(34, 122, 151), white);
+}
+.navbar-brand {
+    background: linear-gradient(rgb(114, 61, 212), rgb(235, 210, 231));
+      display: flex;
+      border-radius: 20px;
+      color: black;
+      font-family: 'Roboto';
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 20px;
+      padding: 5px 10%;
+      box-shadow: 0px 5px 4px 3px rgba(92, 88, 88, 0.3);
+      
+      
+      
+      
+  }
+p {
+    color: black;
+      font-family: 'Roboto';
+}
+  

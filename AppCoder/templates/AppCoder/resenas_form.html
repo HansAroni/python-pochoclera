@@ -1,0 +1,33 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+
+<form method="POST" enctype="multipart/form-data" Align="center"
+style="margin: auto; margin-top: 8%; margin-bottom: 5%;
+width: 50%; 
+height: 75%; 
+border: 1px solid aqua;
+">
+
+    <h2 style="margin-bottom: 8%;">
+        Pochoclera - Crear/modificar reseña
+    </h2>
+    <div>
+        {% csrf_token    %}
+
+        {{form.as_p}} 
+
+        <input type="submit" value="Enviar"></input>   
+    </div>
+</form>
+
+{% endblock %}
+
+       

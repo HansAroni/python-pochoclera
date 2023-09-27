@@ -1,0 +1,54 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<div action="" method="POST" Align="center"
+style="margin: auto; margin-top: 10%; margin-bottom: 8%;
+width: 50%; 
+height: 75%; 
+border: 0px solid aqua;
+">
+
+    <h2 style="margin-bottom: 10%;">
+        Reseñas
+        {% if user.is_authenticated %}
+            <a style="font-size: 50%; color:rgb(224, 147, 209); " href="{% url 'crearresenas' %}">Agregar</a> 
+            
+        {% endif  %}
+    </h2>
+    <!-- Pelis -->
+        {% for e in object_list %}   
+        <div>
+            <h4 ><p> 
+                <span style="color:gold">
+                    {% if e.Pochoclos == "5" %} ★ ★ ★ ★ ★ {% endif %}
+                    {% if e.Pochoclos == "4" %} ★ ★ ★ ★ {% endif %}
+                    {% if e.Pochoclos == "3" %} ★ ★ ★ {% endif %}
+                    {% if e.Pochoclos == "2" %} ★ ★ {% endif %}
+                    {% if e.puntaje == "1" %} ★ {% endif %}
+                </span>&nbsp;&nbsp;&nbsp;{{e.titulo}}
+                </p>
+            </h4>
+            {%  if e.imagen %}
+                <img src="{% static e.imagen.url %}" style="width:50%; " alt="error de imagen">
+            {% endif  %}
+            <p style="color:rgb(170, 64, 170)" Align="center">
+                {{e.mensaje}} <br>
+                {% if user.is_staff %}
+                    <a style="color:rgb(81, 23, 198)" href="{% url 'cambiarresenas' e.id %}">Editar</a>
+                    <a> - </a>
+                    <a style="color:rgb(81, 23, 198)"  href="{% url 'borrarresenas' e.id %}">Borrar</a> 
+                {% endif  %}
+                <hr size=5><br><br><br>
+        </div>
+        <div style="clear: both;"></div>
+        {%  endfor    %}
+
+{% endblock %}
+

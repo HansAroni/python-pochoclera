@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<br>
+        <div Align="center" style="position: relative; text-align: center;">
+
+            <div style="font-size: 300%; top: 50%; left: 50%;">
+                Un poco sobre mí</div>
+
+        </div>
+        <br>
+        <div Align="center" style="color:white; font-size:125%; width: 80%; margin: auto; text-indent: 100px;">
+
+Mi nombre es <span style="color:aqua">Hans Huanca</span>, soy programador de Buenos Aires </a>,
+Estoy aprendiendo sobre en <a style="color:white" href ="https://www.coderhouse.com"> CoderHouse</a>.
+Esta página fue creada como parte del curso de Python y principalmente para dar consejos sobre peliculas que la gente va catalogando. <a style="color:white" href ="https://www.pochoclera.com">Pochoclera</a> permitirá conectar a los fanaticos del cine y que puedan aportar a otras personas.
+Usando una dinamica facíl de usar y que sea accesible por los usuarios desde cualquier equipo ya que es full responsive.
+        </div>
+        <br>
+        <div Align="center" style="color:white; font-size:125%; width: 80%; margin: auto; text-indent: 100px;">
+Desde que era muy chico me gustaron las computadoras y tambien el cine, por lo que quise reunir ambas pasiones y aportar para que otros cinefilos tambien puedan aportar ese conocimiento y recomendar las mejores peliculas que hayan visto.
+        </div>
+        <br>
+        <div Align="center" style="position: relative; text-align: center;">
+            <img src="{% static 'media/imagenes/cine.jpg' %}" style="width:40%; " alt="error de imagen"> 
+            
+        </div>
+        <br>
+        <div Align="center" style="color:rgb(40, 38, 190); font-size:125%; width: 80%; margin: auto; text-indent: 100px;">
+Si deseas ayudar a otras personas recomendando peliculas, series por favor registrate y hazte parte de nuestra comunidad.
+        
+        </div>
+     
+
+{% endblock %}
+        

@@ -1,0 +1,41 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    {{mensaje}}
+{% endblock %}
+
+{% block contenidoQueCambia %}
+
+<form method="POST" enctype="multipart/form-data" Align="center"
+        style="margin: auto; margin-top: 8%; margin-bottom: 5%;
+        width: 50%; 
+        height: 75%; 
+        border: 1px solid aqua;
+        ">
+
+            <h2 style="margin-bottom: 8%;">
+                Pochoclera - Items
+            </h2>
+        
+            {% if form.errors  %}
+        
+                <p>Por favor revisa este campo  </p>
+         
+            {% endif %}
+            <div>
+                    {% csrf_token    %}
+                    <table>
+        
+                    {{ form}} 
+        
+                    </table>
+                        &nbsp;&nbsp;
+                    <button class="btn btn-primary" type="submit">Enviar</button>   
+            
+            </div>
+        </form>
+   
+
+{% endblock %}
